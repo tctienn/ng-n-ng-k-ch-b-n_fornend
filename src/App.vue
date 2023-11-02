@@ -1,7 +1,7 @@
 <script setup>
-// import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from "vue-router";
 // import HelloWorld from './components/HelloWorld.vue'
-import Home from './views/Home.vue';
+// import Home from "./views/Home.vue";
 </script>
 
 <!-- <template>
@@ -21,8 +21,10 @@ import Home from './views/Home.vue';
   <RouterView />
 </template> -->
 <template >
-  
-  <Home/>
+  <!-- <Home/> -->
+  <router-view />
+
+  <!-- <dev></dev> -->
 </template>
 <!-- <style scoped>
 header {
