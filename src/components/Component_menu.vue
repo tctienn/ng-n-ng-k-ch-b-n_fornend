@@ -1,9 +1,9 @@
 <template>
-  <v-navigation-drawer :width="250">
-    <v-list-item title="admin" subtitle="name admin"></v-list-item>
-    <!-- <v-divider></v-divider> -->
+    <v-navigation-drawer :width="250">
+        <v-list-item title="admin" subtitle="name admin"></v-list-item>
+        <!-- <v-divider></v-divider> -->
 
-    <!-- <div>{{ data[0].tyle }}</div>
+        <!-- <div>{{ data[0].tyle }}</div>
     <v-list-item
       link
       v-for="(e, i) in data[0].data"
@@ -27,105 +27,124 @@
       :key="i"
     ></v-list-item> -->
 
-    <v-list v-model:opened="open">
-      <v-list-item
-        prepend-icon="mdi-home"
-        value="Home"
-        title="Home"
-      ></v-list-item>
+        <v-list v-model:opened="open">
+            <v-list-item prepend-icon="mdi-home" value="Home" v-on:click="$emit('ay', 'Admin_home')"
+                title="Home"></v-list-item>
 
-      <v-list-group v-for="(e, i) in data" :key="i" :value="e.tyle">
-        <template v-slot:activator="{ props }" v-if="e.data.length > 0">
-          <v-list-item
-            v-bind="props"
-            :prepend-icon="e.icon"
-            :title="e.tyle"
-          ></v-list-item>
-        </template>
+            <v-list-group v-for="(e, i) in data" :key="i" :value="e.tyle">
+                <template v-slot:activator="{ props }" v-if="e.data.length > 0">
+                    <v-list-item v-bind="props" :prepend-icon="e.icon" :title="e.tyle"></v-list-item>
+                </template>
+                <div style="">
+                    <div>s</div> ss s
+                </div>
+                <v-list-item v-for="(item, index) in e.data" v-on:click="$emit('ay', item.navigation)" :key="index"
+                    :title="item.name" :prepend-icon="item.icon" :value="item.name"></v-list-item>
+            </v-list-group>
 
-        <v-list-item
-          v-for="(item, index) in e.data"
-          :key="index"
-          :title="item.name"
-          :prepend-icon="item.icon"
-          :value="item.name"
-        ></v-list-item>
-      </v-list-group>
+            <v-list-item v-for="(e, i) in data" v-show="e.data.length < 1" :key="i" :value="e.tyle" :prepend-icon="e.icon"
+                :title="e.tyle"></v-list-item>
+        </v-list>
+    </v-navigation-drawer>
 
-      <v-list-item
-        v-for="(e, i) in data"
-        v-show="e.data.length < 1"
-        :key="i"
-        :value="e.tyle"
-        :prepend-icon="e.icon"
-        :title="e.tyle"
-      ></v-list-item>
-    </v-list>
-  </v-navigation-drawer>
-
-  <button v-on:click="$emit('ay','Admin_home')">ay</button>
-
+    <!-- <button v-on:click="$emit('ay','Admin_home')">ay</button> -->
 </template>
+
   
-  <script>
+<script>
 import { ref } from "vue";
 // import { ref } from 'vue';
 
 export default {
-  name: "MsEnu",
-  emits:['ay'],
-  setup() {
-    const data = [
-      {
-        tyle: "ADMIN",
-        icon: "mdi-view-dashboard",
-        data: [
-          {
-            name: "Users",
-            navigation: "",
-            icon: "mdi-account-group",
-          },
-          {
-            name: "Other",
-            navigation: "",
-            icon: "mdi-wrench",
-          },
-        ],
-      },
-      {
-        tyle: "DOCTORS",
-        icon: "mdi-doctor",
-        data: [
-          {
-            name: "Appointment schedule",
-            navigation: "",
-            icon: "mdi-calendar-check",
-          },
-          {
-            name: "plan",
-            navigation: "",
-            icon: "mdi-floor-plan",
-          },
-          {
-            name: "Statistical",
-            navigation: "",
-            icon: "mdi-chart-areaspline",
-          },
-        ],
-      },
-      {
-        tyle: "COUNSELORS",
-        icon: "mdi-face-agent",
-        data: [],
-      },
-    ];
+    name: "MsEnu",
+    emits: ["ay"],
+    setup() {
+        // const data = [
+        //   {
+        //     tyle: "ADMIN",
+        //     icon: "mdi-view-dashboard",
+        //     data: [
+        //       {
+        //         name: "Users",
+        //         navigation: "",
+        //         icon: "mdi-account-group",
+        //       },
+        //       {
+        //         name: "Other",
+        //         navigation: "",
+        //         icon: "mdi-wrench",
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     tyle: "DOCTORS",
+        //     icon: "mdi-doctor",
+        //     data: [
+        //       {
+        //         name: "Appointment schedule",
+        //         navigation: "",
+        //         icon: "mdi-calendar-check",
+        //       },
+        //       {
+        //         name: "plan",
+        //         navigation: "",
+        //         icon: "mdi-floor-plan",
+        //       },
+        //       {
+        //         name: "Statistical",
+        //         navigation: "",
+        //         icon: "mdi-chart-areaspline",
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     tyle: "COUNSELORS",
+        //     icon: "mdi-face-agent",
+        //     data: [],
+        //   },
+        // ];
 
-    const open = ref([]);
+        const data = [
+            {
+                tyle: "User",
+                icon: "mdi-view-dashboard",
+                data: [
+                    {
+                        name: "Doctor",
+                        navigation: "Admin_manageDoctor",
+                        icon: "mdi-account-group",
+                    },
+                    {
+                        name: "Conunslors",
+                        navigation: "",
+                        icon: "mdi-wrench",
+                    },
+                ],
+            },
+            {
+                tyle: "Other",
+                icon: "mdi-doctor",
+                data: [
+                    {
+                        name: "",
+                        navigation: "",
+                        icon: "mdi-chart-areaspline",
+                    },
+                ],
+            },
+            {
+                tyle: "COUNSELORS",
+                icon: "mdi-face-agent",
+                data: [],
+            },
+        ];
 
-    return {
-      data,
-      open,
-    };
-  },
+        const open = ref([]);
+
+        return {
+            data,
+            open,
+        };
+    },
 };
 </script>
