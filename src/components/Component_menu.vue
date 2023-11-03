@@ -62,6 +62,9 @@
       ></v-list-item>
     </v-list>
   </v-navigation-drawer>
+
+  <button v-on:click="$emit('ay','Admin_home')">ay</button>
+
 </template>
   
   <script>
@@ -70,6 +73,7 @@ import { ref } from "vue";
 
 export default {
   name: "MsEnu",
+  emits:['ay'],
   setup() {
     const data = [
       {
