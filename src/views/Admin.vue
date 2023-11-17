@@ -21,6 +21,7 @@ import Admin_home from "../components/Admin_home.vue";
 import { ref } from "vue";
 
 import Admin_manageDoctor from "../components/Admin_manageDoctor.vue";
+import Admin_manageCovan from "../components/Admin_manageCovan.vue";
 
 export default {
   name: "AdmIn",
@@ -29,6 +30,7 @@ export default {
     componenet_headerAdminVue,
     Admin_home,
     Admin_manageDoctor,
+    Admin_manageCovan,
   },
   setup() {
     const navigation = ref("Admin_home");

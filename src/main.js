@@ -15,9 +15,16 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import '@mdi/font/css/materialdesignicons.css'
 
+//date picker
+// import DayJsAdapter from '@date-io/dayjs'
+
+
 const vuetify = createVuetify({
   components,
   directives,
+  // date: {
+  //   adapter: DayJsAdapter,
+  // },
 })
 
 const app = createApp(App)

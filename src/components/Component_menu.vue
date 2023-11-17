@@ -64,7 +64,7 @@
       ></v-list-item>
     </v-list>
   </v-navigation-drawer>
-      
+
   <!-- <button v-on:click="$emit('ay','Admin_home')">ay</button> -->
 </template>
 
@@ -78,7 +78,6 @@ export default {
   name: "MsEnu",
   emits: ["ay"],
   setup() {
-    
     // const data = [
     //   {
     //     tyle: "ADMIN",
@@ -136,7 +135,7 @@ export default {
           },
           {
             name: "Conunslors",
-            navigation: "",
+            navigation: "Admin_manageCovan",
             icon: "mdi-wrench",
           },
         ],

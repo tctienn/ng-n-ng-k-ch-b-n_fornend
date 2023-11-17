@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Header />
+    <Headerr />
 
     <div class="poster" style="">
       <!-- <img
@@ -152,6 +152,51 @@
       </v-sheet>
     </div>
 
+    <!-- bác sĩ thường trực -->
+    <div class="carousels_1">
+      <v-sheet class="mx-auto" elevation="0" max-width="80%">
+        <v-slide-group v-model="model" class="pa-4" show-arrows>
+          <v-slide-group-item
+            v-for="(e, i) in getAlldocrtor"
+            :key="i"
+            v-slot="{ toggle }"
+          >
+            <v-card
+              color="white"
+              :class="['ma-4']"
+              height="400"
+              width="300"
+              elevation="0"
+              @click="toggle"
+            >
+              <div class="d-flex fill-height align-center justify-center">
+                <v-scale-transition>
+                  <div class="carousel_item">
+                    <img
+                      v-bind:src="e.avatar"
+                      style="
+                        width: 80%;
+                        aspect-ratio: 2/2;
+                        margin-left: 10%;
+                        border-radius: 80% 80% 80% 80%;
+                      "
+                    />
+                    <div>
+                      <b>{{ e.name }}</b>
+
+                      <div style="margin-top: 5px; color: #45c3d2">
+                        {{ e.avatar }} >
+                      </div>
+                    </div>
+                  </div>
+                </v-scale-transition>
+              </div>
+            </v-card>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+    </div>
+    <!-- ////////// -->
     <div class="carousels_2">
       <Component_carousel :data="carouselsData2" :bgc="'#f5f5f5'" />
     </div>
@@ -166,7 +211,7 @@
     
 <script >
 import { ref } from "vue";
-import Header from "../components/header.vue";
+import Headerr from "../components/header.vue";
 import Component_carousel from "../components/Component_carousel.vue";
 // import { URL } from "../config/url";
 import {
@@ -175,12 +220,15 @@ import {
   dataCarousel_2,
   dataCarousel_3,
 } from "../config/modelDemo";
+import { get_doctor } from "../config/api";
+
+import { url } from "../config/modelDemo";
 // import ay from "@/assets/image/161905-iconkham-chuyen-khoa.png";
 
 export default {
   name: "HomeS",
   components: {
-    Header,
+    Headerr,
     Component_carousel,
   },
   setup() {
@@ -192,6 +240,15 @@ export default {
     const carouselsData2 = dataCarousel_2;
     const carouselsData3 = dataCarousel_3;
 
+    const getAlldocrtor = ref();
+    get_doctor().then((data) => {
+      getAlldocrtor.value = data.data.doctors;
+      getAlldocrtor.value = getAlldocrtor.value.map((e) => ({
+        ...e,
+        avatar: url + "icon/" + e.avatar,
+      }));
+      console.log("get ", getAlldocrtor.value);
+    });
     return {
       // Header
 
@@ -200,6 +257,7 @@ export default {
       carouselsData2,
       carouselsData3,
       model,
+      getAlldocrtor,
     };
   },
 };
@@ -233,7 +291,7 @@ export default {
 .poster_item1 {
   margin: auto;
   margin-top: 8%;
-  width: 50%;
+  width: 60%;
   /* border: solid black 1px; */
 
   display: flex;
@@ -245,7 +303,7 @@ export default {
 }
 .poster_item2 {
   /* border: solid red 1px; */
-  width: 88%;
+  width: 95%;
   height: max-content;
 
   margin: auto;
@@ -263,6 +321,7 @@ export default {
 }
 
 .carousels_1 {
+  /* border: solid 1px black; */
 }
 .carousel_item {
   width: 100%;

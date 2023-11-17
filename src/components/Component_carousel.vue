@@ -1,6 +1,6 @@
 <template>
   <div class="carousel" :style="'backGround-Color: ' + bgc">
-    <div style="width: 70%; margin: auto">
+    <div style="width: 85%; margin: auto">
       <p style="position: relative">
         <b style="font-size: 22px">{{ data.title }} </b>
         <button
@@ -18,7 +18,7 @@
         </button>
       </p>
     </div>
-    <v-sheet class="mx-auto" elevation="0" max-width="80%" :color="bgc">
+    <v-sheet class="mx-auto" elevation="0" max-width="95%" :color="bgc">
       <v-slide-group v-model="model" class="pa-4" show-arrows>
         <v-slide-group-item v-for="n in 15" :key="n" v-slot="{ toggle }">
           <v-card

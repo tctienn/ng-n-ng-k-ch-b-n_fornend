@@ -22,9 +22,7 @@
       "
     >
       <select style="width: 200px; border: solid 1px black" class="pl-2">
-        <option>s</option>
-        <option>s</option>
-        <option>s</option>
+        <option v-for="(e, i) in 12" :key="i">tháng {{ e }}</option>
       </select>
       <v-btn size="small">filter</v-btn>
     </div>

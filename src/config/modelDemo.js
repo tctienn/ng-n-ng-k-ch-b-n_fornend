@@ -1,6 +1,6 @@
 import { URL } from "./url";
 
-var url = URL + "src/assets/image/icon/";
+export var url = URL + "src/assets/image/icon/";
 export const dataPoster = [
     { name: "Khám Chuyên khoa", img: url + "iocn-1.png", navigation: "" },
     { name: "Khám từ xa", img: url + "iocn-2.png", navigation: "" },

@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Admin from '../views/Admin.vue'
 import Demo_chat from '../components/Demo_chat.vue'
+import DetailDoctor from '../views/DetailDoctor.vue'
+import Demo_datepiker from '../views/demo/demo_datepicker.vue'
 // import Home from '../views/Home.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,10 +25,22 @@ const router = createRouter({
       component: Admin
     },
     {
+      path:'/detail-doctor/:id',
+      name:'detailDoctor',
+      component:DetailDoctor
+    },
+    {
       path:'/demo',
       name:'demo',
       component:Demo_chat
+    },
+    {
+      path:'/demodate',
+      name:'demodate',
+      component:Demo_datepiker
     }
+    
+
     // {
     //   path: '/about',
     //   name: 'about',
